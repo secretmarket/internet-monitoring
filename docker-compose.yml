@@ -10,7 +10,7 @@ networks:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.0.0
+    image: prom/prometheus:v2.26.0
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -64,7 +64,7 @@ services:
       - 9696
     ports:
       - 9696:9696
-    image: stefanwalther/speedtest-exporter
+    image: fpoms/speedtest-exporter:latest
     restart: always
     networks:
       - back-tier
@@ -76,7 +76,7 @@ services:
       - 1915
     ports:
       - 1915:1915
-    image: maxandersen/sonos_exporter
+    image: fpoms/sonos_exporter:latest
     command:
       - '--address=0.0.0.0:1915'
     network_mode: host
